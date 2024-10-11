@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/common/helper/navigation/app_navigation.dart';
 import 'package:netflix/core/configs/assets/app_images.dart';
+import 'package:netflix/presentation/auth/pages/signin.dart';
+import 'package:netflix/presentation/home/pages/home.dart';
 import 'package:netflix/presentation/splash/bloc/splash_cubit.dart';
 import 'package:netflix/presentation/splash/bloc/splash_state.dart';
 
@@ -10,13 +13,13 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<SplashCubit,SplashState>(
+      body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
-          if(state is UnAuthenticated){
-
+          if (state is UnAuthenticated) {
+            AppNavigation.pushReplachment(context, Signinpage());
           }
-          if(state is Authenticated){
-
+          if (state is Authenticated) {
+            AppNavigation.pushReplachment(context, HomePage());
           }
         },
         child: Stack(

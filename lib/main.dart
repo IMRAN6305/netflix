@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/core/configs/theme/app_theme.dart';
-import 'package:netflix/splash.dart';
+import 'package:netflix/presentation/splash/bloc/splash_cubit.dart';
+import 'package:netflix/presentation/splash/pages/splash.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (context) => SplashCubit()..appStarted(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,6 +26,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.appTheme,
-        home:const SplashPage());
+        home: const SplashPage());
   }
 }

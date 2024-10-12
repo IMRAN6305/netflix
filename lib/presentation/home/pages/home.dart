@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:netflix/common/widgets/app_bar/app_bar.dart';
+import 'package:netflix/common/widgets/app_bar/app_vectors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,8 +9,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
+      appBar: BasicAppbar(
+        hideBack: true,
+        title: SvgPicture.asset(AppVectors.logo),
       ),
     );
   }
